@@ -10,9 +10,9 @@ endif
 
 " get cygwindir from registry
 let cygwin_dir = system("reg query \"HKEY_LOCAL_MACHINE\\Software\\Cygwin\\setup\" /v \"rootdir\"")
-let cygwin_dir = substitute(s:cygwin_dir, '^.*REG_SZ\s\+\(.*\)\n\n', '\1', '')
+let cygwin_dir = substitute(cygwin_dir, '^.*REG_SZ\s\+\(.*\)\n\n', '\1', '')
 
 " add to $PATH
-if isdirectory(s:cygwin_dir)
+if isdirectory(cygwin_dir)
     let $PATH = $PATH. ";". cygwin_dir. "\\bin"
 endif
